@@ -76,7 +76,7 @@ def evaluate(code)
             cellptr += 1
         end
         
-        handler = File.open(name, 'w')
+        handler = File.open(name, 'r+')
         cursor = 0
       else
         handler.close
@@ -91,8 +91,12 @@ def evaluate(code)
       end
     when '!'
       if !handler.nil?
-        cells[cellptr] = handler.sysread[cursor]
-        cursor += 1
+        if c = handler.getc
+          cells[cellptr] = c[0].ord
+          cursor += 1
+        else
+          cells[cellptr] = 0
+        end
       else
         $stderr.write "At #{codeptr}: ERROR - NO FILE IS OPEN\n"
         exit
