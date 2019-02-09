@@ -70,7 +70,13 @@ def evaluate(code)
       end
     when '#' then
       if handler.nil?
-        handler = File.open(cells[cellptr].chr, 'w')
+        name = ""
+        while cells[cellptr] != 0 do
+            name = name + cells[cellptr].chr
+            cellptr += 1
+        end
+        
+        handler = File.open(name, 'w')
         cursor = 0
       else
         handler.close
@@ -93,6 +99,12 @@ def evaluate(code)
       end
     when '@'
       if sock.nil?
+        name = ""
+        while cells[cellptr] != 0 do
+            name = name + cells[cellptr].chr
+            cellptr += 1
+        end
+
         sock = TCPSocket.new('127.0.0.1', 1337)
       else
         sock.close
