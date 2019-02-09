@@ -16,7 +16,7 @@ ALLOWED = [
             '#', # Open/close file
             '%', # Write val of current cell to file
             '!', # Read a char from file and set it as the current cell
-            '@', # Open/close socket to localhost (on port 1337)
+            '@', # Open/close socket to localhost (on port 53333)
             '&', # Read 1 char from the socket and set as current cell
             '*', # Write val of current cell to socket
             '~', # goto cell[value of current cell]
