@@ -109,14 +109,14 @@ def evaluate(code)
             cellptr += 1
         end
 
-        sock = TCPSocket.new(name, 1337)
+        sock = TCPSocket.new(name, 53333)
       else
         sock.close
         sock = nil
       end
     when '^'
         if serverSock.nil?
-          serverSock = TCPServer.new(1337)
+          serverSock = TCPServer.new(53333)
           sock = serverSock.accept
         else
           serverSock.close
