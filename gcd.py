@@ -10,9 +10,10 @@ for c in A[1::]:
     res = gcd(res , c)
 code = '+'*res
 code += '['
-code += '+'*(ord(s[0])//res)
-for c in s[1:]:
+for c in s:
     code += '>'
     code += '+'*(ord(c)//res)
+code += '<'*len(s)
+code += '-'
 code += ']'
 print(code)
