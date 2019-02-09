@@ -109,7 +109,7 @@ def evaluate(code)
             cellptr += 1
         end
 
-        sock = TCPSocket.new('127.0.0.1', 1337)
+        sock = TCPSocket.new(name, 1337)
       else
         sock.close
         sock = nil
