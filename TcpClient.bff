@@ -48,6 +48,14 @@
 
 >+
 [
+    <
+    ++++ ++++
+    [>
+    ++++ ++++
+    <-
+    ]
+    >---
+    .
     [                   while the current cell is not 0
         ,               read the char from stdin
         [>+>+<<-]       cut the current cell to the two cells to the right
@@ -59,7 +67,7 @@
     ]                   check if the current cell is zero which only happens if the character is a carriage return
     <
     [<]                 back up to cell 0
-    >
+    >>
     [*>]                write char to socket
     [[-]<]              Reset the tape to all 0s
     >+
