@@ -194,7 +194,13 @@ function eval(file)
         end,
         ['&'] = function()
             if sock ~= nil then
-                tape[tapeptr] = string.byte(sock:receive(1))
+                local recv = sock:receive(1)
+                if recv == nil then
+                    print(string.format( "\x1B[31mDisconnected...\x1B[0m"))
+                    os.exit()
+                else
+                    tape[tapeptr] = string.byte(recv)
+                end
             else
                 error(string.format( "\x1B[31mERROR @ %d: NO SOCKET OPEN\x1B[0m\n", codeptr))
             end
